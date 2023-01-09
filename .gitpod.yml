@@ -10,3 +10,5 @@ vscode:
   extensions:
     - esbenp.prettier-vscode
     - dbaeumer.vscode-eslint
+    - albert.tabout
+    - amazonwebservices.aws-toolkit-vscode
