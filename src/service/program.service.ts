@@ -50,17 +50,26 @@ export const getPrograms = async (): Promise<Program[]> => {
 export const getProgramsForUser = async (id: string): Promise<Program[]> =>
   userIdToPrograms[id];
 
-export const deleteProgram = async (
-  userId: string,
-  programId: string
-): Promise<void> => {
-  getProgramsForUser(userId).then((userPrograms) => {
-    const index = userPrograms.findIndex((p) => p.id === programId);
+export const deletePrograms = async (ids: string[]): Promise<void> => {
+  for (const userPrograms of Object.values(userIdToPrograms)) {
+    for (const id of ids) {
+      const index = userPrograms.findIndex((p) => id === p.id);
+      if (index >= 0) {
+        userPrograms.splice(index, 1);
+        fireCallbacks();
+      }
+    }
+  }
+};
+
+export const deleteProgram = async (id: string): Promise<void> => {
+  for (const userPrograms of Object.values(userIdToPrograms)) {
+    const index = userPrograms.findIndex((p) => p.id === id);
     if (index >= 0) {
       userPrograms.splice(index, 1);
-      fireCallbacks(userId);
+      fireCallbacks();
     }
-  });
+  }
 };
 
 export const onProgramsSnapshot = (
@@ -69,7 +78,7 @@ export const onProgramsSnapshot = (
   error: (error: Error) => void
 ): (() => void) => {
   callbacks.push(cb);
-  fireCallbacks(id);
+  fireCallbacks();
   return () => {
     console.log("unsubscribed from `onProgramsSnapshot`");
   };
@@ -77,9 +86,8 @@ export const onProgramsSnapshot = (
 
 const callbacks: ((programs: Program[]) => void)[] = [];
 
-const fireCallbacks = (id: string) => {
-  const userPrograms = userIdToPrograms[id];
-  if (userPrograms) {
+const fireCallbacks = () => {
+  for (const userPrograms of Object.values(userIdToPrograms)) {
     for (const cb of callbacks) {
       cb([...userPrograms]);
     }
