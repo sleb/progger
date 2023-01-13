@@ -39,7 +39,7 @@ const ProgramListItem = ({ program }: Props) => {
         }
         disablePadding
       >
-        <ListItemButton onClick={() => navigate(`programs/${program.id}`)}>
+        <ListItemButton onClick={() => navigate(program.id)}>
           <ListItemIcon>
             <ArticleOutlined />
           </ListItemIcon>

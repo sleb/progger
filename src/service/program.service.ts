@@ -47,6 +47,15 @@ export const getPrograms = async (): Promise<Program[]> => {
   return programs;
 };
 
+export const getProgram = async (id: string): Promise<Program> => {
+  const program = programs.find((p) => p.id === id);
+  if (!program) {
+    throw Error("no program found for ID");
+  }
+
+  return program;
+};
+
 export const getProgramsForUser = async (id: string): Promise<Program[]> =>
   userIdToPrograms[id];
 
