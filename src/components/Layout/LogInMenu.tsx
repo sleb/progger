@@ -1,14 +1,14 @@
 import { PersonOutline } from "@mui/icons-material";
 import { Avatar, Button, Menu, MenuItem, Typography } from "@mui/material";
 import { MouseEvent, useState } from "react";
-import { useRecoilState } from "recoil";
-import { userIdState } from "../../state/user.state";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const LogInMenu = (props: Props) => {
-  const [userId, setUserId] = useRecoilState(userIdState);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
+  const navigate = useNavigate();
+
   const openMenu = (event: MouseEvent<HTMLElement>) => {
     setMenuAnchor(event.currentTarget);
   };
@@ -36,15 +36,14 @@ const LogInMenu = (props: Props) => {
       >
         <MenuItem
           onClick={() => {
-            setUserId("1");
             closeMenu();
+            navigate("/login");
           }}
         >
           <Typography textAlign="center">Log In</Typography>
         </MenuItem>
         <MenuItem
           onClick={() => {
-            setUserId("1");
             closeMenu();
           }}
         >

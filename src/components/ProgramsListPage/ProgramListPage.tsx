@@ -10,15 +10,11 @@ import ProgramListItem from "./ProgramListItem";
 type Props = {};
 
 const ProgramListPage = (props: Props) => {
-  const userId = useRecoilValue(userIdState);
+  const userId = useRecoilValue(userIdState)!!;
   const [programs, setPrograms] = useState<Program[]>([]);
 
   useEffect(() => {
-    if (userId) {
-      return onProgramsSnapshot(userId, setPrograms, console.error);
-    } else {
-      setPrograms([]);
-    }
+    return onProgramsSnapshot(userId, setPrograms, console.error);
   }, [userId]);
 
   return (

@@ -1,8 +1,8 @@
 import { AppBar, Toolbar } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { userIdState } from "../../state/user.state";
+import Logo from "../Logo";
 import LogInMenu from "./LogInMenu";
-import Logo from "./Logo";
 import ProfileMenu from "./ProfileMenu";
 
 type Props = {};
@@ -13,7 +13,7 @@ const Header = (props: Props) => {
   return (
     <AppBar position="static">
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Logo />
+        <Logo fontSize={24} />
         {userId ? <ProfileMenu /> : <LogInMenu />}
       </Toolbar>
     </AppBar>

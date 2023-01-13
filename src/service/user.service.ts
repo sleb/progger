@@ -1,9 +1,24 @@
-import { User } from "../model/user.model";
+import { User, UserData } from "../model/user.model";
 
 export const getUser = async (id: string): Promise<User> => {
-  return fakeUsers[id];
+  return { id, ...fakeUsers[id] };
 };
 
-const fakeUsers: Record<string, User> = {
-  "1": { id: "1", email: "scott.g.lebaron@gmail.com", name: "Scott LeBaron" },
+export const signIn = async (
+  email: string,
+  password: string
+): Promise<string> => {
+  const entry = Object.entries(fakeUsers).find(
+    ([id, user]) => user.email === email
+  );
+
+  if (!entry) {
+    throw Error("bad user");
+  }
+
+  return entry[0];
+};
+
+const fakeUsers: Record<string, UserData> = {
+  "1": { email: "scott.g.lebaron@gmail.com", name: "Scott LeBaron" },
 };

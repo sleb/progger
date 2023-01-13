@@ -7,16 +7,36 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import AuthRequired from "./components/AuthRequired";
+import HomePage from "./components/HomePage/HomePage";
 import Layout from "./components/Layout/Layout";
+import LoginPage from "./components/LoginPage/LoginPage";
 import ProgramDetailPage from "./components/ProgramDetailPage/ProgramViewPage";
 import ProgramListPage from "./components/ProgramsListPage/ProgramListPage";
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
+    path: "/",
     children: [
-      { path: "/", element: <ProgramListPage /> },
-      { path: "programs/:id", element: <ProgramDetailPage /> },
+      { path: "login", element: <LoginPage /> },
+      {
+        element: <Layout />,
+        children: [
+          { index: true, element: <HomePage /> },
+          {
+            element: <AuthRequired />,
+            children: [
+              {
+                path: "programs",
+                children: [
+                  { index: true, element: <ProgramListPage /> },
+                  { path: ":id", element: <ProgramDetailPage /> },
+                ],
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ]);
