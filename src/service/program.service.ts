@@ -5,9 +5,16 @@ const programs: Program[] = [
     id: "1234",
     date: new Date(2023, 0, 8),
     title: "Sacrament 1/8/2023",
-    announcements: ["building cleaning at 8am on Saturday"],
+    announcements: [
+      "building cleaning at 8am on Saturday",
+      "building cleaning at 8am on Monday",
+      "building cleaning at 8am on Friday",
+      "building cleaning at 8am on Thursday",
+      "building cleaning at 8am on Tuesday",
+    ],
     openingPrayer: "Henry LeBaron",
     openingHymn: { page: 23, title: "Oh Come Thou Font" },
+    sacramentHymn: { page: 84, title: "No Let Us Rejoice" },
     closingHymn: { page: 200, title: "God Be With Us Til We Meet Again" },
     business: ["release Allison LeBaron", "call Freddy LeBaron"],
     speakers: ["Abe LeBaron", "Scott LeBaron"],
@@ -20,6 +27,7 @@ const programs: Program[] = [
     announcements: ["building cleaning at 8am on Saturday"],
     openingPrayer: "Henry LeBaron",
     openingHymn: { page: 23, title: "Oh Come Thou Font" },
+    sacramentHymn: { page: 84, title: "No Let Us Rejoice" },
     closingHymn: { page: 200, title: "God Be With Us Til We Meet Again" },
     business: ["release Allison LeBaron", "call Freddy LeBaron"],
     speakers: ["Abe LeBaron", "Scott LeBaron"],
@@ -32,6 +40,7 @@ const programs: Program[] = [
     announcements: ["building cleaning at 8am on Saturday"],
     openingPrayer: "Henry LeBaron",
     openingHymn: { page: 23, title: "Oh Come Thou Font" },
+    sacramentHymn: { page: 84, title: "No Let Us Rejoice" },
     closingHymn: { page: 200, title: "God Be With Us Til We Meet Again" },
     business: ["release Allison LeBaron", "call Freddy LeBaron"],
     speakers: ["Abe LeBaron", "Scott LeBaron"],
@@ -79,6 +88,18 @@ export const deleteProgram = async (id: string): Promise<void> => {
       fireCallbacks();
     }
   }
+};
+
+export const onProgramSnapshot = (
+  id: string,
+  cb: (program?: Program) => void,
+  error: (error: Error) => void
+) => {
+  callbacks.push(() => getProgram(id).then((p) => cb(p)));
+  fireCallbacks();
+  return () => {
+    console.log("unsubscribed from `onProgramSnapshot`");
+  };
 };
 
 export const onProgramsSnapshot = (

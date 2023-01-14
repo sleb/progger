@@ -20,7 +20,6 @@ const HomePage = (props: Props) => {
         alignItems: "center",
         justifyContent: "center",
         height: "50vh",
-        marginTop: 5,
       }}
     >
       <Logo fontSize={48} />
