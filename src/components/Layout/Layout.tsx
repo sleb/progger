@@ -8,7 +8,7 @@ const Layout = (props: Props) => {
   return (
     <Box>
       <Header />
-      <Container maxWidth="lg" sx={{ marginTop: 5 }}>
+      <Container maxWidth="lg" sx={{ marginY: 5 }}>
         <Outlet />
       </Container>
     </Box>

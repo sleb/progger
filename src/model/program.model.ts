@@ -3,7 +3,8 @@ import { Song } from "./song.model";
 export interface ProgramData {
   title: string;
   date: Date;
-  speakers: string[];
+  youthSpeakers: string[];
+  adultSpeakers: string[];
   openingPrayer: string;
   closingPrayer: string;
   announcements: string[];

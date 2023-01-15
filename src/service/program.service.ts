@@ -17,7 +17,8 @@ const programs: Program[] = [
     sacramentHymn: { page: 84, title: "No Let Us Rejoice" },
     closingHymn: { page: 200, title: "God Be With Us Til We Meet Again" },
     business: ["release Allison LeBaron", "call Freddy LeBaron"],
-    speakers: ["Abe LeBaron", "Scott LeBaron"],
+    youthSpeakers: ["Abe LeBaron", "Scott LeBaron"],
+    adultSpeakers: ["Freddy LeBaron", "Henry LeBaron"],
     closingPrayer: "Mona Bailey",
   },
   {
@@ -30,7 +31,8 @@ const programs: Program[] = [
     sacramentHymn: { page: 84, title: "No Let Us Rejoice" },
     closingHymn: { page: 200, title: "God Be With Us Til We Meet Again" },
     business: ["release Allison LeBaron", "call Freddy LeBaron"],
-    speakers: ["Abe LeBaron", "Scott LeBaron"],
+    youthSpeakers: ["Abe LeBaron", "Scott LeBaron"],
+    adultSpeakers: ["Freddy LeBaron", "Henry LeBaron"],
     closingPrayer: "Mona Bailey",
   },
   {
@@ -43,7 +45,8 @@ const programs: Program[] = [
     sacramentHymn: { page: 84, title: "No Let Us Rejoice" },
     closingHymn: { page: 200, title: "God Be With Us Til We Meet Again" },
     business: ["release Allison LeBaron", "call Freddy LeBaron"],
-    speakers: ["Abe LeBaron", "Scott LeBaron"],
+    youthSpeakers: ["Abe LeBaron", "Scott LeBaron"],
+    adultSpeakers: ["Freddy LeBaron", "Henry LeBaron"],
     closingPrayer: "Mona Bailey",
   },
 ];

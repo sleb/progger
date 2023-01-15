@@ -12,11 +12,13 @@ const ProgramFab = (props: Props) => {
   return (
     <Stack
       direction="column"
+      alignItems="center"
       style={{ position: "absolute", right: 55, bottom: 55 }}
       gap={2}
     >
       {selected.size > 0 && (
         <Fab
+          size="medium"
           onClick={() =>
             deletePrograms([...selected]).then(() => setSelected(new Set()))
           }

@@ -11,7 +11,7 @@ import AuthRequired from "./components/AuthRequired";
 import HomePage from "./components/HomePage/HomePage";
 import Layout from "./components/Layout/Layout";
 import LoginPage from "./components/LoginPage/LoginPage";
-import ProgramDetailPage from "./components/ProgramDetailPage/ProgramViewPage";
+import ProgramViewPage from "./components/ProgramDetailPage/ProgramViewPage";
 import ProgramListPage from "./components/ProgramsListPage/ProgramListPage";
 
 const router = createBrowserRouter([
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
                 path: "programs",
                 children: [
                   { index: true, element: <ProgramListPage /> },
-                  { path: ":id", element: <ProgramDetailPage /> },
+                  { path: ":id", element: <ProgramViewPage /> },
                 ],
               },
             ],

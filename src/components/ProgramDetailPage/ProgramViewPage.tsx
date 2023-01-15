@@ -12,7 +12,7 @@ import Title from "./Title";
 
 type Props = {};
 
-const ProgramDetailPage = (props: Props) => {
+const ProgramViewPage = (props: Props) => {
   const { id } = useParams();
   const [program, setProgram] = useState<Program | undefined>(undefined);
 
@@ -25,7 +25,7 @@ const ProgramDetailPage = (props: Props) => {
 
   return (
     <Stack gap={2}>
-      <Title text={program?.title} />
+      <Title text={program?.title} date={program?.date} />
       <Heading text="Welcome" />
       <Field text="Welcome brothers and sisters." />
       <SubHeading text="Announcements" />
@@ -39,8 +39,20 @@ const ProgramDetailPage = (props: Props) => {
       <FieldList fields={program?.business || []} />
       <SubHeading text="Sacrament Hymn" />
       <HymnField song={program?.sacramentHymn} />
+      <Heading text="Program" />
+      <SubHeading text="Youth Speakers" />
+      <FieldList fields={program?.youthSpeakers || []} />
+      <SubHeading text="Rest Hymn" />
+      <HymnField song={program?.restHymn} />
+      <SubHeading text="Adult Speakers" />
+      <FieldList fields={program?.adultSpeakers || []} />
+      <Heading text="Closing" />
+      <SubHeading text="Closing Hymn" />
+      <HymnField song={program?.closingHymn} />
+      <SubHeading text="Closing Prayer" />
+      <Field text={program?.closingPrayer} />
     </Stack>
   );
 };
 
-export default ProgramDetailPage;
+export default ProgramViewPage;

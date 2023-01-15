@@ -5,7 +5,7 @@ type Props = { text: string };
 const Heading = ({ text }: Props) => {
   return (
     <>
-      <Typography variant="h4">{text}</Typography>
+      <Typography variant="h5">{text}</Typography>
       <Divider />
     </>
   );
